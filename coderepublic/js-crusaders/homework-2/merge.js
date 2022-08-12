@@ -35,3 +35,16 @@ function mergeSortedArrays(arr1, arr2, arr3, arr4, arr5) {
 }
 
 console.log(mergeSortedArrays([3, 9, 19], [1, 15, 19, 31], [1, 2, 15, 26], [-10, 3, 4, 10], [1, 9, 10]));
+
+function mergeSortedArraysWithoutHelperFunction() {
+  let mergedArr = [];
+
+  for (let i = 0; i < arguments.length; i++) {
+    mergedArr = mergedArr.concat(arguments[i]);
+  }
+
+  //Here can be any sorting algorithm
+  return mergedArr.sort((a, b) => (a - b));
+}
+
+console.log(mergeSortedArraysWithoutHelperFunction([3, 9, 19], [1, 15, 19, 31], [1, 2, 15, 26], [-10, 3, 4, 10], [1, 9, 10]));
