@@ -1,19 +1,29 @@
-let testArr = [];
-
-for (let i = 0; i <= 50; i++) {
-  testArr.push(Math.floor(Math.random() * 10000));
-}
+let intSize = 32;
+let minInteger = 0;
+let maxInteger = Math.pow(2, 6);
+let count = 10;
 
 function bitVectorImpl(arr) {
-  let vectorArr = [];
+  let vectorArr = new Array(maxInteger / intSize).fill(0b00000000000000000000000000000000);
+  let resultArr = [];
 
-  arr.forEach((el) => {
-    vectorArr[el] = 1;
-  })
+  for (let i = 0; i < arr.length; i++) {
+    let module = arr[i] % intSize;
+    let index = (arr[i] - module) / intSize;
 
-  let resultArr = Object.keys(vectorArr);
+    vectorArr[index] |= (1 << module);
+  }
+
+  for (let i = 0; i < vectorArr.length; i++) {
+    for (let j = 0; j < intSize; j++) {
+      if (vectorArr[i] & (1 << j)) {
+        resultArr.push(i * intSize + j);
+      }
+    }
+  }
+
 
   return resultArr;
 }
 
-console.log(bitVectorImpl(testArr));
+console.log(bitVectorImpl([5, 2, 4, 9, 10, 25, 7, 44, 33]));

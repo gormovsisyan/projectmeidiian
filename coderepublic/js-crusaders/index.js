@@ -29,4 +29,28 @@ function getFactorialOf(n) {
 }
 
 console.log(getFactorialOf(5));
-console.log(getFactorialOf(4));
+
+function binarySearch(arr, n) {
+  let start = 0;
+  let end = arr.length - 1;
+
+  while (start <= end) {
+    let mid = Math.floor((start + end) / 2);
+
+    if (arr[mid] === n) {
+      return mid;
+    }
+
+    if (arr[mid] < n) {
+      start = mid + 1;
+    }
+
+    if (arr[mid] > n) {
+      end = mid - 1;
+    }
+  }
+
+  return -1;
+}
+
+console.log(binarySearch([1, 2, 3, 4, 6, 7, 8, 9, 10], 5));
