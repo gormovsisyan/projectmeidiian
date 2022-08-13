@@ -1,15 +1,43 @@
 function isUnique(str) {
-  let hashTable = {};
+  let charSet = {};
 
   for (let index in str) {
-    if(hashTable.hasOwnProperty(str.codePointAt(index))) {
+    if(charSet.hasOwnProperty(str.codePointAt(index))) {
       return false;
     }
 
-    hashTable[str.codePointAt(index)] = 1;
+    charSet[str.codePointAt(index)] = 1;
   }
 
   return true;
 }
 
-console.log(isUnique('👩 gor'));
+function set(vectorArr, el) {
+  let module = el % intSize;
+  let index = (el - module) / intSize;
+
+  vectorArr[index] |= (1 << module);
+}
+
+function get(vectorArr, index, module) {
+  return vectorArr[index] & (1 << module);
+}
+
+console.log(isUnique('👩'));
+
+function isUniqueBitVector(str) {
+  let vectorArr = [];
+
+  for (let i in str) {
+    let module = str.codePointAt(i) % 64;
+    let index = (str.codePointAt(i) - module) / 64;
+
+    if(get(vectorArr, index, module)) {
+      return false
+    }
+
+    set(vectorArr, str.codePointAt(i));
+  }
+
+  return true;
+}
