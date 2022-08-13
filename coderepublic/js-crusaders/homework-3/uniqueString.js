@@ -41,4 +41,4 @@ function isUniqueBitVector(str) {
 
   return true;
 }
-console.log(isUniqueBitVector('👩'));
+console.log(isUniqueBitVector('👩🏻‍🦰 🧑🏻‍🦰'));//not working
