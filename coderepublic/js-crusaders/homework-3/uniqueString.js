@@ -13,8 +13,8 @@ function isUnique(str) {
 }
 
 function set(vectorArr, el) {
-  let module = el % intSize;
-  let index = (el - module) / intSize;
+  let module = el % 64;
+  let index = (el - module) / 64;
 
   vectorArr[index] |= (1 << module);
 }
@@ -41,3 +41,4 @@ function isUniqueBitVector(str) {
 
   return true;
 }
+console.log(isUniqueBitVector('👩'));
