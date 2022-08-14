@@ -25,19 +25,17 @@ function reverseString(str) {
 
   for (let i = 0; i < str.length; i++) {
     if (str.codePointAt(i) > Math.pow(2, 16)) {
-      reversedCharSet[str.length - i] = str.codePointAt(i);
+      reversedCharSet[str.length - i] = getSurrogatePair(str.codePointAt(i));
       i++;
     } else {
+      reversedCharSet[str.length - i] = str.codePointAt(i);
     }
-    reversedCharSet[str.length - i] = str.codePointAt(i);
   }
-
-  console.log(reversedCharSet);
 
 
   for (let i in reversedCharSet) {
     if (Array.isArray(reversedCharSet[i])) {
-      // reversedStr += String.fromCodePoint(getAstralCodePoint(reversedCharSet[i][0], reversedCharSet[i][1]));
+      reversedStr += String.fromCodePoint(getAstralCodePoint(reversedCharSet[i][0], reversedCharSet[i][1]));
     } else {
       reversedStr += String.fromCodePoint(reversedCharSet[i]);
     }
@@ -46,5 +44,5 @@ function reverseString(str) {
   return reversedStr;
 }
 
-// console.log(reverseString('👩 👶'));
+console.log(reverseString('👩 👶'));
 console.log(reverseString('👩 👶 🧒🏻 👦🏻'));
