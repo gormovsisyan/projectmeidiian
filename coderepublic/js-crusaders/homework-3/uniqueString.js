@@ -9,6 +9,8 @@ function isUnique(str) {
     charSet[str.codePointAt(index)] = 1;
   }
 
+  console.log(charSet);
+
   return true;
 }
 

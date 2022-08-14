@@ -30,8 +30,6 @@ function bitVectorImpl(arr) {
     }
   }
 
-  get(vectorArr, resultArr);
-
   return resultArr;
 }
 
